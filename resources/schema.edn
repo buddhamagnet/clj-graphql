@@ -1,0 +1,9 @@
+{:objects
+ {:content
+  {:fields {:tegID {:type String}
+            :tegType {:type String}}}}
+
+ :queries
+ {:canonical {:type (:content)
+              :args {:ref {:type String}}
+              :resolve :get-content}}}
