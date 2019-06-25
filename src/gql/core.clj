@@ -1,6 +1,6 @@
 (ns gql.core
   (:gen-class)
-  (:require 
+  (:require
    [io.pedestal.http :as http]
    [clojure.edn :as edn]
    [clojure.java.io :as io]
@@ -22,8 +22,8 @@
 (def content-schema
   (schema/compile
    (attach-resolvers {:get-content get-content}
-     (edn/read-string
-       (slurp (io/resource "schema.edn"))))))
+                     (edn/read-string
+                      (slurp (io/resource "schema.edn"))))))
 
 (def service (lacinia/service-map content-schema {:graphiql true}))
 
@@ -32,5 +32,5 @@
 (defn -main
   "The entry-point for 'lein run'"
   [& args]
-  (println "\nCreating your server...")
+  (println "\nBooting GraphQL server...")
   (http/start runnable-service))
